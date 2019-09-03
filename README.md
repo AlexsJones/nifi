@@ -41,6 +41,15 @@ zookeeper:
   nodePort: 2888
 ```
 
+Web UI Access
+
+```yaml
+service:
+  type: LoadBalancer
+  # Access the web UI from http://<IP>:8080/nifi/
+  port: 8080
+```
+
 ### Specifying Values
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
