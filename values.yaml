@@ -16,7 +16,8 @@ fullnameOverride: ""
 bannerText: Nifi Cluster
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
+  # Access the web UI from http://<IP>:8080/nifi/
   port: 8080
 
 listener:
