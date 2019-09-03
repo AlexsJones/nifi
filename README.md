@@ -1,5 +1,10 @@
 # Nifi chart
 
+![forks](https://img.shields.io/github/forks/AlexsJones/nifi.svg)
+![stars](https://img.shields.io/github/stars/AlexsJones/nifi.svg)
+![license](https://img.shields.io/github/license/AlexsJones/nifi.svg)
+![issues](https://img.shields.io/github/issues/AlexsJones/nifi.svg)
+
 A helm chart for Nifi.
 Includes zookeeper subchart.
 Ready to roll.
