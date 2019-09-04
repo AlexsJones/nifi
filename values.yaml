@@ -24,6 +24,8 @@ listener:
   port: 8081
 
 zookeeper:
+  deploy:
+    enabled: true
   nodeList: zk-0.zk-hs,zk-1.zk-hs,zk-2.zk-hs
   nodePort: 2888
 

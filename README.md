@@ -34,11 +34,13 @@ nifi-1 nifi 2019-09-03 08:17:11,735 INFO [Clustering Tasks Thread-1] o.a.n.c.c.C
 ## Configuration
 
 Set a custom zookeeper subchart connection string
+It is also possible to set `helm install . -n nifi --set="zookeeper.deploy.enabled=false"` to use an existing zookeeper deployment.
 
 ```yaml
 zookeeper:
+  deploy:
+    enabled: true
   nodeList: zk-0.zk-hs,zk-1.zk-hs,zk-2.zk-hs
-  nodePort: 2888
 ```
 
 Web UI Access
