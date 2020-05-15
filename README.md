@@ -9,13 +9,30 @@ A helm chart for Nifi.
 Includes zookeeper subchart.
 Ready to roll.
 
-_If my zookeeper chart is accepted into `helm/charts` I will apply to have this chart added also and remove the vendor folder._
-
 
 ## Installation
 
 ```bash
-helm install . --namespace=nifi
+➜  nifi git:(master) ✗ kubectl create ns nifi
+namespace/nifi created
+➜  nifi git:(master) ✗ helm install nifi . --namespace=nifi
+NAME: nifi
+LAST DEPLOYED: Fri May 15 16:32:16 2020
+NAMESPACE: nifi
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+     NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+           You can watch the status of by running 'kubectl get --namespace nifi svc -w nifi'
+  export SERVICE_IP=$(kubectl get svc --namespace nifi nifi -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+  echo http://$SERVICE_IP:8080
+  ➜  nifi git:(master) ✗ kubectl get pods -n nifi
+NAME     READY   STATUS              RESTARTS   AGE
+nifi-0   0/1     ContainerCreating   0          5s
+zk-0     0/1     Pending             0          5s
+zk-1     0/1     Pending             0          5s
+zk-2     0/1     Pending             0          5s
 ```
 
 Be prepared to wait a while - the election process in Nifi takes around 5 minutes.
@@ -34,7 +51,9 @@ nifi-1 nifi 2019-09-03 08:17:11,735 INFO [Clustering Tasks Thread-1] o.a.n.c.c.C
 ## Configuration
 
 Set a custom zookeeper subchart connection string
-It is also possible to set `helm install . -n nifi --set="zookeeper.deploy.enabled=false"` to use an existing zookeeper deployment.
+It is also possible to set `helm install nifi . -n nifi --set="zookeeper.deploy.enabled=false"` to use an existing zookeeper deployment.
+
+Or updating the dockerimage `helm install nifi . --namespace=nifi --set=zookeeper.image.repository=foo --dry-run`
 
 ```yaml
 zookeeper:
